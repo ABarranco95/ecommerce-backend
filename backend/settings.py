@@ -28,7 +28,7 @@ SECRET_KEY = '_iok1w1d038qb%lt_+w=g@f-tl=1swrbbsk6*q^-7@pu&akee&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['backend-ale-creations.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -117,6 +117,12 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_DIRS = (
+    [
+        os.path.join(BASE_DIR, 'frontend/build')
+    ]
+)
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
