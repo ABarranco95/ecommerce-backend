@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
             name='OrderItem',
             fields=[
                 ('name', models.CharField(blank=True, max_length=200, null=True)),
-                ('quantity', models.IntegerField(blank=True, default=0, null=True)),
+                ('qty', models.IntegerField(blank=True, default=0, null=True)),
                 ('price', models.DecimalField(blank=True, decimal_places=2, max_digits=7, null=True)),
                 ('image', models.CharField(blank=True, max_length=200, null=True)),
                 ('_id', models.AutoField(editable=False, primary_key=True, serialize=False)),
