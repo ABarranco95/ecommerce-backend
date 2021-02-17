@@ -29,6 +29,7 @@ def getProduct(request, pk):
 @permission_classes([IsAdminUser])
 def createProduct(request):
     user = request.user
+    
     product = Product.objects.create(
         user = user,
         name = 'Sample Name',
@@ -43,7 +44,7 @@ def createProduct(request):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
+@api_view(['PUT'])
 @permission_classes([IsAdminUser])
 def updateProduct(request, pk):
     data = request.data
@@ -69,3 +70,16 @@ def deleteProduct(request, pk):
     product.delete()
    
     return Response('Product deleted successfully')
+
+
+@api_view(['POST'])
+def uploadImage(request):
+    data = request.data
+
+    product_id = data['product_id']
+    product = Product.objects.get(_id=product_id)
+
+    product.image = request.FILES.get('image')
+    product.save()
+
+    return Response('Image was uploaded')
